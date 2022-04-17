@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons8-place-marker-48.png</file>
+        <file>main.qml</file>
+        <file>Slidezoom.qml</file>
+        <file>Slidetilt.qml</file>
+        <file>Sliderbearing.qml</file>
+        <file>SliderFov.qml</file>
+        <file>CustomTooltip.qml</file>
+    </qresource>
+</RCC>
