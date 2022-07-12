@@ -1,5 +1,8 @@
-QT -= gui
 
+QT += core
+QT -= gui
+QT += widgets
+QT += opengl
 TEMPLATE = lib
 DEFINES += ATLASMAP3D_LIBRARY
 
@@ -17,14 +20,64 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    atlasmap3d.cpp
+    AtlasMainWindow.cpp \
+    NXDockWidget.cpp \
+    NXDockWidgetTabBar.cpp \
+    NXDockWidgetTabButton.cpp \
+    NXDockWidgetTitle.cpp \
+    DataManager.cpp \
+    DataRecord.cpp \
+    DataTree.cpp \
+    FeatureStyleSettingDlg.cpp \
+    FontVisitor.cpp \
+    MapController.cpp \
+    MousePicker.cpp \
+    PluginInterface.cpp \
+    PluginManager.cpp \
+    SettingsManager.cpp \
+    Compass.cpp \
+    ViewerWidget.cpp
 
 HEADERS += \
-    atlasmap3d_global.h \
-    atlasmap3d.h
+    NameSpace.h \
+    AtlasMainWindow.h \
+    NXDockWidget.h \
+    NXDockWidgetTabBar.h \
+    NXDockWidgetTabButton.h \
+    NXDockWidgetTitle.h \
+    atlasmainwindow_global.h \
+    DataFormats.h \
+    DataManager.h \
+    DataRecord.h \
+    DataTree.h \
+    FeatureStyleSettingDlg.h \
+    FindNode.hpp \
+    FontVisitor.h \
+    MapController.h \
+    MousePicker.h \
+    PluginInterface.h \
+    PluginManager.h \
+    SettingsManager.h \
+    Compass.h \
+    ViewerWidget.h \
 
 # Default rules for deployment.
 unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+
+FORMS += \
+    AtlasMainWindow.ui \
+    FeatureStyleSettingDlg.ui \
+    StyleTab.ui
+
+DISTFILES +=
+
+LIBS  = -L$$PWD/../plugins
+
+unix:!macx: LIBS += -L$$PWD/../../osgQt/build-topic-Qt4/lib/ -losgQt5
+
+INCLUDEPATH += $$PWD/../../osgQt/osgQt-topic-Qt4/include
+DEPENDPATH += $$PWD/../../osgQt/osgQt-topic-Qt4/include
+

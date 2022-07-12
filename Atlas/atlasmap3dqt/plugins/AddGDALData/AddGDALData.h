@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <QtPlugin>
-#include <EarthDataInterface/EarthDataInterface.h>
+#include "EarthDataInterface/EarthDataInterface.h"
 
 QT_BEGIN_NAMESPACE
 class QToolBar;
@@ -10,21 +10,19 @@ QT_END_NAMESPACE
 
 class AddGDALData: public EarthDataInterface
 {
-	Q_OBJECT
-	Q_PLUGIN_METADATA(IID "io.tqjxlm.Atlas.PluginInterface" FILE "AddGDALData.json")
-	Q_INTERFACES(PluginInterface)
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "io.tqjxlm.Atlas.PluginInterface" FILE "AddGDALData.json")
+    Q_INTERFACES(PluginInterface)
 
 public:
-	AddGDALData();
+    AddGDALData();
 
-	~AddGDALData();
+    ~AddGDALData() override;
 
-  virtual void  setupUi(QToolBar *toolBar, QMenu *menu) override;
+    virtual void  setupUi(QToolBar *toolBar, QMenu *menu) override;
 
 public slots:
-  void          addImage();
-
-  void          addTerrain();
-
-  void          addFeature();
+    void          addImage();
+    void          addTerrain();
+    void          addFeature();
 };

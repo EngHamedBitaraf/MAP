@@ -138,9 +138,9 @@ void ModelLayerManager::getFeatureAttribute(const QString& path, QVector<attrib>
 
 	{
 		AltitudeSymbol* ls = style->getOrCreateSymbol<AltitudeSymbol>();
-		ls->clamping() = osgEarth::AltitudeSymbol::CLAMP_RELATIVE_TO_TERRAIN;
-		ls->technique() = osgEarth::AltitudeSymbol::TECHNIQUE_DRAPE;
-		ls->binding() = osgEarth::AltitudeSymbol::BINDING_VERTEX;
+                ls->clamping() = osgEarth::Symbology::AltitudeSymbol::CLAMP_RELATIVE_TO_TERRAIN;
+                ls->technique() = osgEarth::Symbology::AltitudeSymbol::TECHNIQUE_DRAPE;
+                ls->binding() = osgEarth::Symbology::AltitudeSymbol::BINDING_VERTEX;
 		ls->verticalOffset() = 0;
 	}
 }

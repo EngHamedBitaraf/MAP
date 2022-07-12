@@ -106,7 +106,7 @@ void  AddObliqueModel::loadObliqueModel(const QString& pathXML)
 
 	if (!file.open(QFile::ReadOnly | QFile::Text))
 	{
-		QMessageBox::information(NULL, tr("Error"), tr("Fail to open!"));
+        QMessageBox::information(nullptr, tr("Error"), tr("Fail to open!"));
 
 		return;
 	}
@@ -115,7 +115,7 @@ void  AddObliqueModel::loadObliqueModel(const QString& pathXML)
 
 	if (!doc.setContent(&file))
 	{
-		QMessageBox::information(NULL, tr("Error"), tr("Fail to open!"));
+        QMessageBox::information(nullptr, tr("Error"), tr("Fail to open!"));
 		file.close();
 
 		return;
@@ -123,7 +123,7 @@ void  AddObliqueModel::loadObliqueModel(const QString& pathXML)
 
 	if (doc.isNull())
 	{
-		QMessageBox::information(NULL, tr("Error"), tr("Invalid XML file!"));
+        QMessageBox::information(nullptr, tr("Error"), tr("Invalid XML file!"));
 		file.close();
 
 		return;
@@ -158,7 +158,7 @@ void  AddObliqueModel::loadObliqueModel(const QString& pathXML)
 
 	if (srsInfo.isEmpty() || _srsOriginInfo.isEmpty())
 	{
-		QMessageBox::information(NULL, tr("Error"), tr("Invalid XML file!"));
+        QMessageBox::information(nullptr, tr("Error"), tr("Invalid XML file!"));
 		file.close();
 
 		return;

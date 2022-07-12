@@ -6,7 +6,7 @@
 
 #include <osg/PolygonMode>
 
-#include <DataManager/FindNode.hpp>
+#include <core/DataManager/FindNode.hpp>
 
 MeshMode::MeshMode()
 	: _mode(0)

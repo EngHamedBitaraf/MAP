@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <QtPlugin>
-#include <DrawSurfaceLine/DrawSurfaceLine.h>
+#include "DrawSurfaceLine/DrawSurfaceLine.h"
 
 #include <QMap>
 #include <QThread>

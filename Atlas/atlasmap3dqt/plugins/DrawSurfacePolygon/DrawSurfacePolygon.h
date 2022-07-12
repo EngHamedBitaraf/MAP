@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "DrawSurfacePolygon_global.h"
 #include <QtPlugin>
-#include <DrawSurfaceLine/DrawSurfaceLine.h>
+#include "DrawSurfaceLine/DrawSurfaceLine.h"
 
 #include <QVector>
 

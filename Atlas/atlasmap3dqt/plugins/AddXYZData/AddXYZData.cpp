@@ -9,7 +9,7 @@
 #include <osgEarthDrivers/xyz/XYZOptions>
 using namespace osgEarth::Drivers;
 
-#include <EarthDataInterface/urlDialog.h>
+#include "EarthDataInterface/urlDialog.h"
 
 AddXYZData::AddXYZData()
 {
@@ -22,7 +22,7 @@ AddXYZData::~AddXYZData()
 
 }
 
-void AddXYZData::setupUi(QToolBar *toolBar, QMenu *menu)
+void AddXYZData::setupUi(QToolBar */*toolBar*/, QMenu *menu)
 {
 	QAction* imageAction = new QAction(_mainWindow);
 	imageAction->setObjectName(QStringLiteral("addXYZImgAction"));

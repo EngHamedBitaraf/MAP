@@ -26,7 +26,7 @@
 #include <ogr_geometry.h>
 #include <ogr_feature.h>
 
-#include <ViewerWidget/ViewerWidget.h>
+#include <../../atlasmap3d/core/ViewerWidget/ViewerWidget.h>
 
 static QMap<int, QString>    fieldMap;
 static QMap<int, osg::Vec3>  geomMap;

@@ -1,5 +1,5 @@
 QT += gui
-
+QT += widgets
 TEMPLATE = lib
 CONFIG += plugin
 
@@ -17,13 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    DrawPolygon.cpp
 
 HEADERS += \
+    DrawPolygon.h \
+    DrawPolygon_global.h
 
 DISTFILES += \
+    DrawPolygon.json
 
 # Default rules for deployment.
 unix {
     target.path = $$[QT_INSTALL_PLUGINS]/generic
 }
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH  += ../../atlasmap3d/

@@ -16,7 +16,7 @@
 using namespace osgEarth;
 using namespace osgEarth::Drivers;
 
-#include <EarthDataInterface/urlDialog.h>
+#include "EarthDataInterface/urlDialog.h"
 
 static QVector<attrib> getHeightMapInfo(std::string& path, osgEarth::GeoExtent*& extent)
 {

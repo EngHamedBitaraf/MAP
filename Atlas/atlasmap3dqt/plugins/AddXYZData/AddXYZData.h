@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <QtPlugin>
-#include <EarthDataInterface/EarthDataInterface.h>
+#include "EarthDataInterface/EarthDataInterface.h"
 
 QT_BEGIN_NAMESPACE
 class QToolBar;
@@ -16,7 +16,7 @@ class AddXYZData : public EarthDataInterface
 
 public:
 	AddXYZData();
-	~AddXYZData();
+    ~AddXYZData() override;
 	virtual void setupUi(QToolBar *toolBar, QMenu *menu) override;
 
 public slots:

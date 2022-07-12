@@ -15,9 +15,9 @@
 
 #include <osgEarth/SpatialReference>
 
-#include <SettingsManager/SettingsManager.h>
-#include <AtlasMainWindow/AtlasMainWindow.h>
-#include <AtlasMainWindow/NXDockWidget.h>
+#include <core/SettingsManager/SettingsManager.h>
+#include <core/AtlasMainWindow/AtlasMainWindow.h>
+#include <core/AtlasMainWindow/NXDockWidget.h>
 
 Locator::Locator()
 {
@@ -29,7 +29,7 @@ Locator::~Locator(void)
 {
 }
 
-void  Locator::setupUi(QToolBar *toolBar, QMenu *menu)
+void  Locator::setupUi(QToolBar */*toolBar*/, QMenu */*menu*/)
 {
 	_action = new QAction(_mainWindow);
 	_action->setObjectName(QStringLiteral("locateAction"));

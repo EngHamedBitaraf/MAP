@@ -29,7 +29,7 @@ using namespace std;
 #include <ogr_feature.h>
 
 #include "DiffVisitor.h"
-#include <ViewerWidget/ViewerWidget.h>
+#include <core/ViewerWidget/ViewerWidget.h>
 
 struct GridPoint
 {

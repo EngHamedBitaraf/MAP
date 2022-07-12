@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "PluginInterface_global.h"
-#include <MousePicker/MousePicker.h>
+#include "../MousePicker/MousePicker.h"
 #include "../../NameSpace.h"
 
 #include <QVariant>
@@ -31,8 +31,8 @@ class Point;
 
 namespace osgEarth 
 {
-	class GeoExtent;
-	class Layer;
+class GeoExtent;
+class Layer;
 }
 
 /** Common interface for plugins
@@ -63,200 +63,200 @@ namespace osgEarth
  */
 class PLUGININTERFACE_EXPORT  PluginInterface: public MousePicker
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	struct StyleConfig
-	{
-		StyleConfig();
+    struct StyleConfig
+    {
+        StyleConfig();
 
-    osg::ref_ptr<osg::LineWidth>  lineWidth;
-    osg::ref_ptr<osg::Point>      pointSize;
-    osg::Vec4                     lineColor;
-    osg::Vec4                     pointColor;
-    osg::Vec4                     fillColor;
-    osg::ref_ptr<osgText::Font>   font;
-    float                         textSize;
-    float                         textFloating;
-    osg::Vec4                     textColor;
-	};
+        osg::ref_ptr<osg::LineWidth>  lineWidth;
+        osg::ref_ptr<osg::Point>      pointSize;
+        osg::Vec4                     lineColor;
+        osg::Vec4                     pointColor;
+        osg::Vec4                     fillColor;
+        osg::ref_ptr<osgText::Font>   font;
+        float                         textSize;
+        float                         textFloating;
+        osg::Vec4                     textColor;
+    };
 
 public:
-	PluginInterface();
+    PluginInterface();
 
-	virtual ~PluginInterface(void);
+    virtual ~PluginInterface(void);
 
-  virtual void  init();
+    virtual void  init();
 
-  virtual void  setupUi(QToolBar *toolBar, QMenu *menu) = 0;
+    virtual void  setupUi(QToolBar *toolBar, QMenu *menu) = 0;
 
-	// Load a custom context menu when right click on the related tree node from DataTree
-  virtual void  loadContextMenu(QMenu *contextMenu, QTreeWidgetItem *selectedItem);
+    // Load a custom context menu when right click on the related tree node from DataTree
+    virtual void  loadContextMenu(QMenu *contextMenu, QTreeWidgetItem *selectedItem);
 
-	// Main function to handle input events
-  virtual bool  handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIActionAdapter &aa);
+    // Main function to handle input events
+    virtual bool  handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIActionAdapter &aa);
 
-  QString       getPluginName();
+    QString       getPluginName();
 
-  QString       getPluginGroup();
+    QString       getPluginGroup();
 
-	/** Register an action as exclusive with others
+    /** Register an action as exclusive with others
    * If not set, the action can act with other mutex actions
    */
-  static void   registerMutexAction(QAction *action);
+    static void   registerMutexAction(QAction *action);
 
-	// Set an action that is always enabled when no other action is enabled
-  static void   setDefaultAction(QAction *action);
+    // Set an action that is always enabled when no other action is enabled
+    static void   setDefaultAction(QAction *action);
 
 protected:
-  // Get or add a setting from the plugin settings
-  // The setting is plugin-specific, so different plugin may have the same setting
-  // If you don't provide a default value (or provide an invalid value), the setting won't be added
-  QVariant                             getOrAddPluginSettings(const QString& key, const QVariant &defaultValue = QVariant());
+    // Get or add a setting from the plugin settings
+    // The setting is plugin-specific, so different plugin may have the same setting
+    // If you don't provide a default value (or provide an invalid value), the setting won't be added
+    QVariant                             getOrAddPluginSettings(const QString& key, const QVariant &defaultValue = QVariant());
 
-  // Change a setting from the plugin settings
-  // The setting is plugin-specific, so different plugin may have the same setting
-  QVariant                             setPluginSettings(const QString& key, const QVariant &value);
+    // Change a setting from the plugin settings
+    // The setting is plugin-specific, so different plugin may have the same setting
+    QVariant                             setPluginSettings(const QString& key, const QVariant &value);
 
-  virtual osg::ref_ptr<osg::Geometry>  createPointGeode(const osg::Vec3 &pos, const osg::Vec3 &norm = osg::Vec3(0, 0, 1.0));
+    virtual osg::ref_ptr<osg::Geometry>  createPointGeode(const osg::Vec3 &pos, const osg::Vec3 &norm = osg::Vec3(0, 0, 1.0));
 
-  virtual osg::ref_ptr<osgText::Text>  createTextGeode(std::string &txt, osg::Vec3 position);
+    virtual osg::ref_ptr<osgText::Text>  createTextGeode(std::string &txt, osg::Vec3 position);
 
-	// Register an action with a mutex group where only one action can be enabled at one time
-  static void                          uncheckMutexActions(QAction *action);
+    // Register an action with a mutex group where only one action can be enabled at one time
+    static void                          uncheckMutexActions(QAction *action);
 
-	// Style config
-  StyleConfig                          getDefaultStyle();
+    // Style config
+    StyleConfig                          getDefaultStyle();
 
-	// Record current draw node to DataTree
-  virtual void                         recordCurrent(const QString& parent = "");
+    // Record current draw node to DataTree
+    virtual void                         recordCurrent(const QString& parent = "");
 
-	// Record a node to DataTree
-  virtual void                         recordNode(osg::Node *node, const QString& name = "", const QString& parent = "");
+    // Record a node to DataTree
+    virtual void                         recordNode(osg::Node *node, const QString& name = "", const QString& parent = "");
 
-	// Record a layer to DataTree
-	virtual void recordLayer(osgEarth::Layer* layer, const QString& name = "", const QString& parent = "");
+    // Record a layer to DataTree
+    virtual void recordLayer(osgEarth::Layer* layer, const QString& name = "", const QString& parent = "");
 
-  /** Call this before you begin a new drawing
+    /** Call this before you begin a new drawing
    * It does the following things:
    *   1. update _currentAnchor and _anchoredOffset
    *   2. update _isDrawing status
    */
-  virtual void                         beginDrawing();
+    virtual void                         beginDrawing();
 
-  /** Call this after you fishied a drawing
+    /** Call this after you fishied a drawing
    * It makes sure any thing related to drawing do not happen afterwards
    */
-  virtual void                         endDrawing();
+    virtual void                         endDrawing();
 
-	/** Update _currentAnchor to the nearest anchor point
+    /** Update _currentAnchor to the nearest anchor point
    *
    * This function exists to support anti-jittering for large coordinates
    */
-  void                                 updateAnchorPoint();
+    void                                 updateAnchorPoint();
 
-	/** Return the nearest anchor point to the target (default as _currentWorldPos)
+    /** Return the nearest anchor point to the target (default as _currentWorldPos)
    * The target should be in world coordinate
    * This function exists to support anti-jittering for large coordinates
    */
-  osg::PositionAttitudeTransform     * getNearestAnchorPoint(const osg::Vec3 &point = _currentWorldPos);
+    osg::PositionAttitudeTransform     * getNearestAnchorPoint(const osg::Vec3 &point = _currentWorldPos);
 
-  // Return an anchored version of a world space array
-  osg::ref_ptr<osg::Vec3Array>         anchorArray(osg::ref_ptr<osg::Vec3Array> worldSpaceArray);
+    // Return an anchored version of a world space array
+    osg::ref_ptr<osg::Vec3Array>         anchorArray(osg::ref_ptr<osg::Vec3Array> worldSpaceArray);
 
-	// -------------------------Keyboard and mouse callback functions-------------------------
-  virtual void                         onLeftButton()
-  {
-  }
+    // -------------------------Keyboard and mouse callback functions-------------------------
+    virtual void                         onLeftButton()
+    {
+    }
 
-  virtual void                         onRightButton()
-  {
-  }
+    virtual void                         onRightButton()
+    {
+    }
 
-  virtual void                         onReleaseButton()
-  {
-  }
+    virtual void                         onReleaseButton()
+    {
+    }
 
-  virtual void                         onDoubleClick()
-  {
-  }
+    virtual void                         onDoubleClick()
+    {
+    }
 
-  virtual void                         onMouseMove()
-  {
-  }
+    virtual void                         onMouseMove()
+    {
+    }
 
-  virtual void                         onArrowKeyUp()
-  {
-  }
+    virtual void                         onArrowKeyUp()
+    {
+    }
 
-  virtual void                         onArrowKeyDown()
-  {
-  }
+    virtual void                         onArrowKeyDown()
+    {
+    }
 
 signals:
-	void recordData(osg::Node*, QString, QString, bool = false);
-	void recordData(osgEarth::Layer*, QString, QString, osgEarth::GeoExtent* = NULL, bool = false);
-	void removeData(const QString&);
-	void switchData(QString, bool);
-	void loadingProgress(int);
-	void loadingDone();
-  void setViewPoint(const osgEarth::Viewpoint &);
+    void recordData(osg::Node*, QString, QString, bool = false);
+    void recordData(osgEarth::Layer*, QString, QString, osgEarth::GeoExtent* = NULL, bool = false);
+    void removeData(const QString&);
+    void switchData(QString, bool);
+    void loadingProgress(int);
+    void loadingDone();
+    void setViewPoint(const osgEarth::Viewpoint &);
 
 public slots:
-	// Default function to toggle the plugin on or off
-  virtual void  toggle(bool checked = true);
+    // Default function to toggle the plugin on or off
+    virtual void  toggle(bool checked = true);
 
 protected:
-	// Indicator of drawing status
-  bool  _isDrawing;
+    // Indicator of drawing status
+    bool  _isDrawing;
 
-	// Number of nodes that have been drawn
-  int  _instanceCount;
+    // Number of nodes that have been drawn
+    int  _instanceCount;
 
-	// A category name for all drawings done by this PluginInterface
-  QString  _pluginName;
+    // A category name for all drawings done by this PluginInterface
+    QString  _pluginName;
 
-	// A category name to determine where the plugin's UI should be loaded
-	// You can only choose from { "Data", "Draw", "Measure", "Analysis", "Effect", "Edit"}
-  QString  _pluginCategory;
+    // A category name to determine where the plugin's UI should be loaded
+    // You can only choose from { "Data", "Draw", "Measure", "Analysis", "Effect", "Edit"}
+    QString  _pluginCategory;
 
-	// Root node for all drawings of this PluginInterface
-  osg::ref_ptr<osg::Group>  _pluginRoot;
+    // Root node for all drawings of this PluginInterface
+    osg::ref_ptr<osg::Group>  _pluginRoot;
 
-	/** Root node for all drawings of this time.
+    /** Root node for all drawings of this time.
    * Every time a draw action begins, a new _currentDrawNode should be instantiated
    */
-  osg::ref_ptr<osg::Geode>  _currentDrawNode;
+    osg::ref_ptr<osg::Geode>  _currentDrawNode;
 
-	// Anchor points that help to reduce maltitude of coordinates
-	// This helps to reduce node jittering
-  QMap<unsigned, QMap<unsigned, osg::ref_ptr<osg::PositionAttitudeTransform>>>  anchorPoints;
+    // Anchor points that help to reduce maltitude of coordinates
+    // This helps to reduce node jittering
+    QMap<unsigned, QMap<unsigned, osg::ref_ptr<osg::PositionAttitudeTransform>>>  anchorPoints;
 
-	/** Root node with small local coords
+    /** Root node with small local coords
    * Every time you add a node to the scene, add it to the current anchor
    * OSGEarth layers are not required to do so
    */
-  osg::ref_ptr<osg::PositionAttitudeTransform>  _currentAnchor;
+    osg::ref_ptr<osg::PositionAttitudeTransform>  _currentAnchor;
 
-  osg::Vec3  _anchoredOffset;
-  osg::Vec3  _anchoredWorldPos;
+    osg::Vec3  _anchoredOffset;
+    osg::Vec3  _anchoredWorldPos;
 
-  osgViewer::View *_currentView;
+    osgViewer::View *_currentView;
 
-  const osgGA::GUIEventAdapter *_currentEA;
-  StyleConfig                   _style;
+    const osgGA::GUIEventAdapter *_currentEA;
+    StyleConfig                   _style;
 
-	// Draw root of the currently activated PluginInterface
-  static osg::Group *_activatedPlugin;
+    // Draw root of the currently activated PluginInterface
+    static osg::Group *_activatedPlugin;
 
 private:
-	// An action group that allow only one action to be toggled at any time
-  static QActionGroup *_mutexActions;
+    // An action group that allow only one action to be toggled at any time
+    static QActionGroup *_mutexActions;
 
-	// A default action that is toggled when no other action is toggled
-  static QAction *_defaultAction;
-  double          _anchorStepX;
-  double          _anchorStepY;
+    // A default action that is toggled when no other action is toggled
+    static QAction *_defaultAction;
+    double          _anchorStepX;
+    double          _anchorStepY;
 };
 
 QT_BEGIN_NAMESPACE

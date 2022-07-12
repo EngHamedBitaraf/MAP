@@ -2,7 +2,7 @@
 
 #include <QtPlugin>
 
-#include <DrawSurfacePolygon/DrawSurfacePolygon.h>
+#include "DrawSurfacePolygon/DrawSurfacePolygon.h"
 
 QT_BEGIN_NAMESPACE
 class QToolBar;

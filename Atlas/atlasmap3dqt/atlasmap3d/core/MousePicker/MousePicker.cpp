@@ -13,7 +13,7 @@
 #include <osgSim/OverlayNode>
 #include <osgViewer/View>
 
-#include <DataManager/FindNode.hpp>
+#include "../DataManager/FindNode.hpp"
 
 osgEarth::GeoPoint                                     MousePicker::_currentGeoPos;
 osg::Vec3d                                             MousePicker::_currentLocalPos;
@@ -196,7 +196,7 @@ void  MousePicker::registerData(QWidget *mainWindow, DataManager *dataManager, V
 		}
 		else
 		{
-			_mapNode[i] = NULL;
+            _mapNode[i] = nullptr;
 		}
 	}
 }

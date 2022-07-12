@@ -1,4 +1,5 @@
 QT += gui
+QT += widgets
 
 TEMPLATE = lib
 CONFIG += plugin
@@ -17,13 +18,35 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    OrthoMap.cpp \
+    PosterPrinter.cpp \
+    SaveOrthoDSMDialog.cpp \
+    SaveOrthoProjDialog.cpp
 
 HEADERS += \
+    OrthoMap.h \
+    PosterPrinter.h \
+    SaveOrthoDSMDialog.h \
+    SaveOrthoProjDialog.h
 
 DISTFILES += \
+    OrthoMap.json
 
 # Default rules for deployment.
 unix {
     target.path = $$[QT_INSTALL_PLUGINS]/generic
 }
 !isEmpty(target.path): INSTALLS += target
+
+FORMS += \
+    SaveOrthoProjDialog.ui
+
+#LIBS  += -L/usr/local/lib64/ -losg -losgViewer -losgGA -losgDB -losgManipulator -losgSim -losgParticle -losgText -losgUtil
+#LIBS  += -L/usr/local/lib64/ -lgdal -losgEarth -losgEarthFeatures -losgEarthUtil -losgEarthSymbology -losgEarthAnnotation
+
+INCLUDEPATH  += ../../atlasmap3d/
+
+#unix:!macx: LIBS += -L$$OUT_PWD/../../atlasmap3d/ -latlasmap3d
+
+INCLUDEPATH += $$PWD/../
+#DEPENDPATH += $$PWD/../

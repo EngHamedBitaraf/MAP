@@ -6,10 +6,10 @@
 #include <QString>
 #include <string>
 
-#include "../../NameSpace.h"
-#include <DataManager/DataFormats.h>
+#include "../../atlasmap3d/NameSpace.h"
+#include <../../atlasmap3d/core/DataManager/DataFormats.h>
 
-#include <PluginInterface/PluginInterface.h>
+#include <../../atlasmap3d/core/PluginInterface/PluginInterface.h>
 
 #include <osg/Object>
 

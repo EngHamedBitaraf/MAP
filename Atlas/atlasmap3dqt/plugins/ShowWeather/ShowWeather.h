@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <QtPlugin>
-#include <PluginInterface/PluginInterface.h>
+#include <../../atlasmap3d/core/PluginInterface/PluginInterface.h>
 
 QT_BEGIN_NAMESPACE
 class QToolBar;

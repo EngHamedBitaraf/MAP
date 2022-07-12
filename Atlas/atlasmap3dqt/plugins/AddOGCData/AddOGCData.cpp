@@ -20,7 +20,7 @@ using namespace osgEarth;
 using namespace osgEarth::Drivers;
 
 #include "MultiChooseDlg.h"
-#include <EarthDataInterface/urlDialog.h>
+#include "EarthDataInterface/urlDialog.h"
 
 static QVector<attrib>  getWMSInfo(std::string &path, osgEarth::GeoExtent * &extent)
 {

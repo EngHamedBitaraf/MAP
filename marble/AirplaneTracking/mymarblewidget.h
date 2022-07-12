@@ -9,6 +9,7 @@ class MyMarbleWidget: public MarbleWidget
 public:
     MyMarbleWidget();
     virtual void customPaint(GeoPainter* painter);
+    
 
 };
 

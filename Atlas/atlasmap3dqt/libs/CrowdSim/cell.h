@@ -7,6 +7,7 @@
 #include <map>
 #include <limits>
 #include "agent.h"
+#include <cmath>
 
 using namespace std;
 
@@ -53,7 +54,7 @@ namespace Ped {
 			float y = static_cast<float>(velocity.y);
 			if (x < 0)
 				if (y > 0)
-					return abs(x) < abs(y) ? 0 : 7;
+                    return abs(x) < abs(y) ? 0 : 7;
 				else
 					return abs(x) < abs(y) ? 5 : 6;
 			else

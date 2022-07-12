@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <QtPlugin>
-#include <PluginInterface/PluginInterface.h>
+#include <core/PluginInterface/PluginInterface.h>
 
 QT_BEGIN_NAMESPACE
 class QToolBar;
@@ -16,7 +16,7 @@ class AddPointCloud : public PluginInterface
 
 public:
 	AddPointCloud();
-	~AddPointCloud();
+    ~AddPointCloud() override;
 	virtual void setupUi(QToolBar *toolBar, QMenu *menu) override;
 
 protected:

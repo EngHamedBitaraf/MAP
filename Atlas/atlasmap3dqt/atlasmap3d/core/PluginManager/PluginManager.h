@@ -1,7 +1,6 @@
 #ifndef PLUGINMANAGER_H
 #define PLUGINMANAGER_H
 
-#include "PluginManager_global.h"
 
 #include "../../NameSpace.h"
 #include <QObject>
@@ -23,7 +22,7 @@ class QTreeWidgetItem;
 QT_END_NAMESPACE
 
 
-class PLUGINMANAGER_EXPORT PluginManager : public QObject
+class PluginManager : public QObject
 {
 	Q_OBJECT
 

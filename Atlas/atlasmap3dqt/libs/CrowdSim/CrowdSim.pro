@@ -17,14 +17,49 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    crowdsim3333.cpp
+    CrowdSim.cpp \
+    PathPlanner.cpp \
+    agent.cpp \
+    cell.cpp \
+    grid.cpp \
+    libpedsim/ped_agent.cpp \
+    libpedsim/ped_obstacle.cpp \
+    libpedsim/ped_outputwriter.cpp \
+    libpedsim/ped_scene.cpp \
+    libpedsim/ped_tree.cpp \
+    libpedsim/ped_vector.cpp \
+    libpedsim/ped_waypoint.cpp \
+    micropather.cpp \
+    obstacle.cpp \
+    scene.cpp \
+    tree.cpp \
+    waypoint.cpp
 
 HEADERS += \
-    CrowdSim_global.h \
-    crowdsim3333.h
+    CrowdSim.h \
+    PathPlanner.h \
+    agent.h \
+    cell.h \
+    config.h \
+    grid.h \
+    libpedsim/ped_agent.h \
+    libpedsim/ped_includes.h \
+    libpedsim/ped_obstacle.h \
+    libpedsim/ped_outputwriter.h \
+    libpedsim/ped_scene.h \
+    libpedsim/ped_tree.h \
+    libpedsim/ped_vector.h \
+    libpedsim/ped_waypoint.h \
+    micropather.h \
+    obstacle.h \
+    scene.h \
+    tree.h \
+    waypoint.h
 
 # Default rules for deployment.
 unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=

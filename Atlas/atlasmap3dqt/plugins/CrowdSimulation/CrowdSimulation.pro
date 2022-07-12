@@ -1,4 +1,5 @@
 QT += gui
+QT += widgets
 
 TEMPLATE = lib
 CONFIG += plugin
@@ -17,13 +18,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    CrowdSimRenderer.cpp \
+    CrowdSimulation.cpp
 
 HEADERS += \
+    CrowdSimRenderer.h \
+    CrowdSimulation.h
 
 DISTFILES += \
+    CrowdSimulation.json
 
 # Default rules for deployment.
 unix {
     target.path = $$[QT_INSTALL_PLUGINS]/generic
 }
 !isEmpty(target.path): INSTALLS += target
+
+#unix:!macx: LIBS += -L$$OUT_PWD/../../atlasmap3d/ -latlasmap3d
+
+INCLUDEPATH += $$PWD/../
+#DEPENDPATH += $$PWD/../
+
+INCLUDEPATH  += ../../atlasmap3d/
+
+#unix:!macx: LIBS += -L$$OUT_PWD/../../libs/CrowdSim/ -lCrowdSim
+
+INCLUDEPATH += $$PWD/../../libs/
+#DEPENDPATH += $$PWD/../../libs/

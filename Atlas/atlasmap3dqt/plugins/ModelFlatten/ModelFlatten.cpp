@@ -11,7 +11,7 @@
 #include <QTreeWidgetItem>
 #include <QThread>
 
-#include <DataManager/DataRecord.h>
+#include <core/DataManager/DataRecord.h>
 
 #include "FlattenProcess.h"
 

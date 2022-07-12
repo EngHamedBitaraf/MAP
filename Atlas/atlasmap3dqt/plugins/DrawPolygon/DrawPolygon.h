@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "DrawPolygon_global.h"
 #include <QtPlugin>
-#include <PluginInterface/PluginInterface.h>
+#include <core/PluginInterface/PluginInterface.h>
 
 QT_BEGIN_NAMESPACE
 class QToolBar;

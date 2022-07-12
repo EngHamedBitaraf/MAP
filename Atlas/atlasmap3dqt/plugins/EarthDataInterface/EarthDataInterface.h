@@ -3,9 +3,9 @@
 #include "EarthDataInterface_global.h"
 
 #include <QtPlugin>
-#include <PluginInterface/PluginInterface.h>
+#include <core/PluginInterface/PluginInterface.h>
 
-#include <DataManager/DataFormats.h>
+#include <core/DataManager/DataFormats.h>
 
 QT_BEGIN_NAMESPACE
 class QToolBar;
@@ -34,7 +34,7 @@ class EARTHDATAINTERFACE_EXPORT EarthDataInterface : public PluginInterface
 
 public:
 	EarthDataInterface();
-	~EarthDataInterface();
+    ~EarthDataInterface() override;
 	virtual void setupUi(QToolBar *toolBar, QMenu *menu) override;
 	virtual void init() override;
 

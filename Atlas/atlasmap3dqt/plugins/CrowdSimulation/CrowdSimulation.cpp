@@ -29,8 +29,8 @@
 #include <osgDB/ReadFile>
 #include <osgDB/WriteFile>
 
-#include <AtlasMainWindow/AtlasMainWindow.h>
-#include <AtlasMainWindow/NXDockWidget.h>
+#include <core/AtlasMainWindow/AtlasMainWindow.h>
+#include <core/AtlasMainWindow/NXDockWidget.h>
 #include "CrowdSimRenderer.h"
 #include <CrowdSim/PathPlanner.h>
 #include <CrowdSim/cell.h>

@@ -1,4 +1,10 @@
 #ifndef MEASURELINE_GLOBAL_H
 #define MEASURELINE_GLOBAL_H
+#include <QtCore/qglobal.h>
 
+#ifdef MEASURELINE_LIB
+# define MEASURELINE_EXPORT Q_DECL_EXPORT
+#else
+# define MEASURELINE_EXPORT Q_DECL_IMPORT
+#endif
 #endif // MEASURELINE_GLOBAL_H

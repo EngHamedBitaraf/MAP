@@ -1,6 +1,6 @@
 ﻿#include "DiffVisitor.h"
 
-#include "../../NameSpace.h"
+#include "NameSpace.h"
 
 #include <osgUtil/LineSegmentIntersector>
 #include <osgDB/ReadFile>

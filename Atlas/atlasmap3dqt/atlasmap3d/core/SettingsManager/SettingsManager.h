@@ -2,7 +2,7 @@
 #define SETTINGSMANAGER_H
 #include "SettingsManager_global.h"
 
-#include "../NameSpace.h"
+#include "../../NameSpace.h"
 
 #include <osg/Vec4>
 

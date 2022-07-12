@@ -1,6 +1,6 @@
 #include "EarthDataInterface.h"
 
-#include <DataManager/DataFormats.h>
+#include <../../atlasmap3d/core/DataManager/DataFormats.h>
 
 #include <QToolBar>
 #include <QAction>
@@ -18,8 +18,8 @@
 #include <osgEarth/ImageLayer>
 #include <osgEarth/ElevationLayer>
 
-#include <DataManager/DataManager.h>
-#include <SettingsManager/SettingsManager.h>
+#include <../../atlasmap3d/core/DataManager/DataManager.h>
+#include <../../atlasmap3d/core/SettingsManager/SettingsManager.h>
 
 #include "ModelLayerManager.h"
 

@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Load the OpenStreetMap map
     m_marbleWidget->setMapThemeId("earth/openstreetmap/openstreetmap.dgml");
-    m_marbleWidget->setProjection( Mercator );
+    m_marbleWidget->setProjection( Marble::Mercator );
     setGeometry(80, 60, 1000, 800);
     GeoDataCoordinates Tehran(51.41, 35.68, 0.0, GeoDataCoordinates::Degree);
     m_marbleWidget->centerOn(Tehran);
@@ -30,16 +30,35 @@ MainWindow::MainWindow(QWidget *parent)
     m_airplane = new GeoDataPlacemark("Airplan");
     GeoDataStyle *styleAirplane = new GeoDataStyle;
     GeoDataIconStyle iconStyle;
-    iconStyle.setIconPath("/home/mosi/Desktop/airplan.png");
+    iconStyle.setIconPath("/home/client110/Desktop/airplan.png");
     iconStyle.setSize(QSize(45,45));
     styleAirplane->setIconStyle(iconStyle);
     m_airplane->setStyle(GeoDataStyle::Ptr( styleAirplane ));
 
     m_airplane->setCoordinate(Tehran);
+    m_airplane->setPopulation( 1877155 );
+    m_airplane->setCountryCode ( "Romania" );
     GeoDataDocument *document = new GeoDataDocument;
 
     document->append(m_airplane);
-    document->append(m_airplane);
+//    document->append(m_airplane);
+    //m_marbleWidget->model()->treeModel()->addDocument(document);
+
+    for(int i = 0; i < 100; i++)
+    {
+        GeoDataPlacemark *gp = new GeoDataPlacemark("Airplan" + QString::number(i));
+        GeoDataCoordinates cor(51.41 + i+1, 35.68 + i, 0.0, GeoDataCoordinates::Degree);
+        GeoDataStyle *styleAirplane1 = new GeoDataStyle;
+        GeoDataIconStyle iconStyle1;
+        iconStyle1.setIconPath("/home/client110/Desktop/airplan.png");
+        iconStyle1.setSize(QSize(45,45));
+        styleAirplane1->setIconStyle(iconStyle1);
+        gp->setStyle(GeoDataStyle::Ptr( styleAirplane1 ));
+        gp->setCoordinate(cor);
+//        GeoDataDocument *d = new GeoDataDocument;
+        document->append(gp);
+
+    }
 
     m_marbleWidget->model()->treeModel()->addDocument(document);
 

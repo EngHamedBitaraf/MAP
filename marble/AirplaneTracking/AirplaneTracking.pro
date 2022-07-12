@@ -2,7 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++17
+CONFIG += c++14
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -23,11 +23,8 @@ FORMS += \
     mainwindow.ui
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
 
-unix:!macx: LIBS += -L$$PWD/../../../../Qt/marble/export/lib/ -lmarblewidget-qt5
+unix:!macx:!symbian: LIBS += -L$$PWD/../../../marble/export/lib64/ -lmarblewidget-qt5
 
-INCLUDEPATH += $$PWD/../../../../Qt/marble/export/include
-DEPENDPATH += $$PWD/../../../../Qt/marble/export/include
+INCLUDEPATH += $$PWD/../../../marble/export/include
+DEPENDPATH += $$PWD/../../../marble/export/include

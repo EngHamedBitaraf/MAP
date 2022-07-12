@@ -12,10 +12,10 @@
 #include <osgQt/GraphicsWindowQt>
 #include <osgDB/Registry>
 
-#include <DataManager/FindNode.hpp>
-#include <ViewerWidget/ViewerWidget.h>
-#include <DataManager/DataManager.h>
-#include <DataManager/DataRecord.h>
+#include <core/DataManager/FindNode.hpp>
+#include <core/ViewerWidget/ViewerWidget.h>
+#include <core/DataManager/DataManager.h>
+#include <core/DataManager/DataRecord.h>
 
 static osg::Vec4 colorToVec(const QColor &color)
 {

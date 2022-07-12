@@ -1,4 +1,6 @@
 QT += gui
+QT += widgets
+QT += opengl
 
 TEMPLATE = lib
 CONFIG += plugin
@@ -17,13 +19,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    SlopAnalysis.cpp
 
 HEADERS += \
+    SlopAnalysis.h
 
 DISTFILES += \
+    SlopAnalysis.json
 
 # Default rules for deployment.
 unix {
     target.path = $$[QT_INSTALL_PLUGINS]/generic
 }
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH  += ../../atlasmap3d/
+
+#unix:!macx: LIBS += -L$$PWD/../../../osgQt/build-topic-Qt4/lib/ -losgQt5
+
+INCLUDEPATH += $$PWD/../../../osgQt/osgQt-topic-Qt4/include
+DEPENDPATH += $$PWD/../../../osgQt/osgQt-topic-Qt4/include
