@@ -74,7 +74,8 @@ FORMS += \
 
 DISTFILES +=
 
-LIBS  = -L$$PWD/../plugins
+#LIBS  = -L$$PWD/../plugins
+#unix:!macx: LIBS += -L/home/client110/build-atlas/plugins
 
 unix:!macx: LIBS += -L$$PWD/../../osgQt/build-topic-Qt4/lib/ -losgQt5
 

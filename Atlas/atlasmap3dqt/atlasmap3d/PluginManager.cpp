@@ -75,35 +75,36 @@ void  PluginManager::loadPlugins()
 #endif
     pluginsDir.cd("..");
     pluginsDir.cd("plugins");
-
+    qApp->addLibraryPath(pluginsDir.path());
+    QStringList lp = qApp->libraryPaths();
     // Parsing plugin dependencies
-//    QStringList subDirs =  pluginsDir.entryList(QDir::Dirs);
-//    foreach(const QString &subDir, subDirs)
-//    {
-//        if(subDir == "." || subDir == "..")
-//            continue;
-//        QDir  dir(pluginsDir);
-//        dir.cd(subDir);
-//        qDebug()<<dir;
-//        foreach(const QString &fName, dir.entryList(QDir::Files))
-//        {
-//            if ((fName.split('.').back() == "so") || (fName.split('.').back() == "dll"))
-//            {
-//                parseDependency(fName, dir);
-//            }
-//        }
-//    }
-      foreach(const QString& fileName, pluginsDir.entryList(QDir::Files))
-      {
+    //    QStringList subDirs =  pluginsDir.entryList(QDir::Dirs);
+    //    foreach(const QString &subDir, subDirs)
+    //    {
+    //        if(subDir == "." || subDir == "..")
+    //            continue;
+    //        QDir  dir(pluginsDir);
+    //        dir.cd(subDir);
+    //        qDebug()<<dir;
+    //        foreach(const QString &fName, dir.entryList(QDir::Files))
+    //        {
+    //            if ((fName.split('.').back() == "so") || (fName.split('.').back() == "dll"))
+    //            {
+    //                parseDependency(fName, dir);
+    //            }
+    //        }
+    //    }
+    foreach(const QString& fileName, pluginsDir.entryList(QDir::Files))
+    {
         if ((fileName.split('.').back() == "so") || (fileName.split('.').back() == "dll"))
         {
-          parseDependency(fileName, pluginsDir);
+            parseDependency(fileName, pluginsDir);
         }
 
-      }
+    }
 
     // Load plugins based on denpendency tree
-//    qDebug()<<_readyToLoad;
+    //    qDebug()<<_readyToLoad;
     while (!_readyToLoad.isEmpty())
     {
         PluginEntry *pluginEntry = _readyToLoad.front();
@@ -220,7 +221,6 @@ void  PluginManager::loadPlugin(PluginEntry *pluginEntry)
 
     // Mark the plugin as parsed
     _pluginEntries.remove(pluginEntry->name);
-
     // Try load plugin
     QPluginLoader  pluginLoader(pluginEntry->path);
     QObject       *instance = pluginLoader.instance();
@@ -251,8 +251,6 @@ void  PluginManager::loadPlugin(PluginEntry *pluginEntry)
     {
         QString errStr = pluginLoader.errorString();
         qWarning() << "Plugin loading failed: [" << pluginEntry->path
-                   << "] " << pluginLoader.errorString();
-        qDebug() << "Plugin loading failed: [" << pluginEntry->path
                    << "] " << pluginLoader.errorString();
     }
 }

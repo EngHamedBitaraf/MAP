@@ -6,6 +6,8 @@ CONFIG += plugin
 
 CONFIG += c++11
 
+#plugins dir
+DESTDIR = $$OUT_PWD/../
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -34,7 +36,6 @@ unix {
 
 INCLUDEPATH  += ../../atlasmap3d/
 
-#unix:!macx: LIBS += -L$$OUT_PWD/../../atlasmap3d/ -latlasmap3d
-
+unix:!macx: LIBS += -L$$OUT_PWD/../ -lEarthDataInterface
 INCLUDEPATH += $$PWD/../
-#DEPENDPATH += $$PWD/../
+DEPENDPATH += $$PWD/../

@@ -5,7 +5,8 @@ TEMPLATE = lib
 CONFIG += plugin
 
 CONFIG += c++11
-
+#plugins dir
+DESTDIR = $$OUT_PWD/../
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -41,12 +42,10 @@ unix {
 FORMS += \
     SaveOrthoProjDialog.ui
 
-#LIBS  += -L/usr/local/lib64/ -losg -losgViewer -losgGA -losgDB -losgManipulator -losgSim -losgParticle -losgText -losgUtil
-#LIBS  += -L/usr/local/lib64/ -lgdal -losgEarth -losgEarthFeatures -losgEarthUtil -losgEarthSymbology -losgEarthAnnotation
 
 INCLUDEPATH  += ../../atlasmap3d/
 
-#unix:!macx: LIBS += -L$$OUT_PWD/../../atlasmap3d/ -latlasmap3d
+unix:!macx: LIBS += -L$$OUT_PWD/../ -lDrawSurfacePolygon
 
 INCLUDEPATH += $$PWD/../
-#DEPENDPATH += $$PWD/../
+DEPENDPATH += $$PWD/../

@@ -41,7 +41,7 @@ using namespace std;
 #include <core/SettingsManager/SettingsManager.h>
 #include <core/PluginManager/PluginManager.h>
 #include <core/MapController/MapController.h>
-#include <ui_AtlasMainWindow.h>
+#include <../atlasmap3d/ui_AtlasMainWindow.h>
 
 Atlas::Atlas(QWidget *parent, Qt::WindowFlags flags):
     AtlasMainWindow(parent, flags)

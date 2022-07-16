@@ -174,6 +174,29 @@ unix:!macx: LIBS += -L$$OUT_PWD/../libs/CrowdSim/ -lCrowdSim
 INCLUDEPATH += $$PWD/../libs/CrowdSim
 DEPENDPATH += $$PWD/../libs/CrowdSim
 
-#unix:!macx: LIBS += -L$$PWD/../../../build-atlasmap3dqt-Desktop_Qt_5_13_1_GCC_64bit-Debug/plugins/DrawLine/ -lDrawLine
-#INCLUDEPATH += $$PWD/../
-#DEPENDPATH += $$PWD/../
+unix:!macx: LIBS += -L$$OUT_PWD/../plugins
+
+
+
+unix:!macx: LIBS += -L$$PWD/../../openvr/openvr/lib/linux64/ -lopenvr_api
+
+INCLUDEPATH += $$PWD/../../openvr/openvr/headers
+DEPENDPATH += $$PWD/../../openvr/openvr/headers
+
+#copy resource folder
+defineTest(copyToDestDir) {
+    files = $$1
+    dir = $$2
+    # replace slashes in destination path for Windows
+    win32:dir ~= s,/,\\,g
+
+    for(file, files) {
+        # replace slashes in source path for Windows
+        win32:file ~= s,/,\\,g
+
+        QMAKE_POST_LINK += $$QMAKE_COPY_DIR $$shell_quote($$file) $$shell_quote($$dir) $$escape_expand(\\n\\t)
+    }
+
+    export(QMAKE_POST_LINK)
+}
+copyToDestDir($$PWD/resources, $$OUT_PWD/resources)

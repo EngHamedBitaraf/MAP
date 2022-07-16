@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    EarthDataInterface \
     AddArcGISData \
     AddGDALData \
     AddModel \
@@ -9,15 +10,15 @@ SUBDIRS += \
     AddPointCloud \
     AddTMSData \
     AddXYZData \
-    CrowdSimulation \
-    DiffAnalysis \
     DrawLine \
     DrawPolygon \
     DrawSurfaceLine \
     DrawSurfacePolygon \
     DrawVector \
-    EarthDataInterface \
+    CrowdSimulation \
+    DiffAnalysis \
     Locator \
+    SetRefPlane \
     MeasureArea \
     MeasureHeight \
     MeasureLine \
@@ -29,7 +30,6 @@ SUBDIRS += \
     OpenSkyNetwork\
     OrthoMap \
     ScreenShot \
-    SetRefPlane \
     ShowWeather \
     SlopAnalysis \
     Template \

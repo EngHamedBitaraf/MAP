@@ -15,7 +15,6 @@ int  main(int argc, char *argv[])
       QSurfaceFormat::setDefaultFormat(format);
 
       QApplication  app(argc, argv);
-
       // Load an application style
       QFile  styleFile("resources/styles/Atlas.qss");
 

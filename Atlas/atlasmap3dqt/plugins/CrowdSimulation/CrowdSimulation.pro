@@ -6,6 +6,8 @@ CONFIG += plugin
 
 CONFIG += c++11
 
+#plugins dir
+DESTDIR = $$OUT_PWD/../
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -34,14 +36,16 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 
-#unix:!macx: LIBS += -L$$OUT_PWD/../../atlasmap3d/ -latlasmap3d
-
-INCLUDEPATH += $$PWD/../
-#DEPENDPATH += $$PWD/../
-
 INCLUDEPATH  += ../../atlasmap3d/
 
-#unix:!macx: LIBS += -L$$OUT_PWD/../../libs/CrowdSim/ -lCrowdSim
+unix:!macx: LIBS += -L$$OUT_PWD/../ -lDrawSurfaceLine
+INCLUDEPATH += $$PWD/../
+DEPENDPATH += $$PWD/../
+
+
+
+
+unix:!macx: LIBS += -L$$OUT_PWD/../../libs/CrowdSim/ -lCrowdSim
 
 INCLUDEPATH += $$PWD/../../libs/
-#DEPENDPATH += $$PWD/../../libs/
+DEPENDPATH += $$PWD/../../libs/
