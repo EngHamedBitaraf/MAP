@@ -200,3 +200,5 @@ defineTest(copyToDestDir) {
     export(QMAKE_POST_LINK)
 }
 copyToDestDir($$PWD/resources, $$OUT_PWD/resources)
+copyToDestDir($$PWD/../plugins/OpenSkyNetwork/res, $$OUT_PWD/resources/OpenSkyNetwork)
+copyToDestDir($$PWD/../plugins/Template/res, $$OUT_PWD/resources/Template)

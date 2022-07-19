@@ -1,7 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    atlasmap3d \
     libs \
     plugins \
+    atlasmap3d \
     Atlas

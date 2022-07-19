@@ -109,7 +109,7 @@ AddArcGISData::~AddArcGISData()
 {
 }
 
-void  AddArcGISData::setupUi(QToolBar *toolBar, QMenu *menu)
+void  AddArcGISData::setupUi(QToolBar */*toolBar*/, QMenu *menu)
 {
     QIcon  icon;
 
@@ -164,7 +164,7 @@ void  AddArcGISData::addImage()
             return;
 
         auto                 nodeName = url.toLocal8Bit().toStdString();
-        osgEarth::GeoExtent *extent   = NULL;
+        osgEarth::GeoExtent *extent   = nullptr;
 
         QVector<attrib>  attribute;
         ArcGISOptions    opt;
@@ -192,7 +192,7 @@ void  AddArcGISData::addTerrain()
             return;
 
         auto                 nodeName = url.toLocal8Bit().toStdString();
-        osgEarth::GeoExtent *extent   = NULL;
+        osgEarth::GeoExtent *extent   = nullptr;
 
         ArcGISOptions  opt;
         opt.url() = nodeName;

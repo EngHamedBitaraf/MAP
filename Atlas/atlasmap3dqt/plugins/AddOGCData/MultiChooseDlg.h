@@ -10,15 +10,15 @@ QT_END_NAMESPACE
 
 class MultiChooseDlg : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	MultiChooseDlg(QWidget *parent, QStringList& itemToChoose);
-	~MultiChooseDlg();
-	QStringList getCheckedItems();
+    MultiChooseDlg(QWidget *parent, QStringList& itemToChoose);
+    ~MultiChooseDlg();
+    QStringList getCheckedItems();
 
 private:
-	QTableWidget* _table;
+    QTableWidget* _table;
 };
 
 #endif // MULTICHOOSEDLG_H

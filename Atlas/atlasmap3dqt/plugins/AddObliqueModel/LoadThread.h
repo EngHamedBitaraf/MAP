@@ -9,27 +9,27 @@
 #include <osg/BoundingBox>
 
 namespace osg {
-	class Group;
-	class Node;
+class Group;
+class Node;
 }
 
 class LoadThread : public QThread
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	LoadThread(QMutex& loadingLock, osg::Group* model, const QFileInfoList& allFileList);
+    LoadThread(QMutex& loadingLock, osg::Group* model, const QFileInfoList& allFileList);
 
-	void run();
+    void run();
 
 signals:
-	void progress(int);
-	void done();
+    void progress(int);
+    void done();
 
 private:
-	QFileInfoList _allFileList;
-	osg::Group* _model;
-	QMutex& _loadingLock;
+    QFileInfoList _allFileList;
+    osg::Group* _model;
+    QMutex& _loadingLock;
 };
 
 #endif // LOADTHREAD_H

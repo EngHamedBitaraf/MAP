@@ -5,35 +5,35 @@
 #include <osgDB/ReadFile>
 
 LoadThread::LoadThread(QMutex& loadingLock, osg::Group* model, const QFileInfoList& allFileList) 
-    : _loadingLock(loadingLock)
+    : _allFileList(allFileList)
     , _model(model)
-    , _allFileList(allFileList)
+    , _loadingLock(loadingLock)
 {
 }
 
 void LoadThread::run()
 {
-	_loadingLock.lock();
+    _loadingLock.lock();
 
-	int i = 0;
-	float pbUnit = qAbs( (100 - 10.0f - 1.0f) / (_allFileList.length() - 1));
+    int i = 0;
+    float pbUnit = qAbs( (100 - 10.0f - 1.0f) / (_allFileList.length() - 1));
 
-	foreach(QFileInfo fileInfo, _allFileList)
-	{
-		float pbValue = 10 + i * pbUnit;
-		i += 1;
-		emit progress(pbValue);
+    foreach(QFileInfo fileInfo, _allFileList)
+    {
+        float pbValue = 10 + i * pbUnit;
+        i += 1;
+        emit progress(pbValue);
 
-		osg::ref_ptr<osg::Node> node = osgDB::readNodeFile(fileInfo.absoluteFilePath().toLocal8Bit().toStdString());
-		if (!node.valid())
-			continue;
-		QString nodestrpath = fileInfo.absoluteFilePath();
-		node->setName(nodestrpath.toLocal8Bit().toStdString());
-		_model->addChild(node);
-	}
+        osg::ref_ptr<osg::Node> node = osgDB::readNodeFile(fileInfo.absoluteFilePath().toLocal8Bit().toStdString());
+        if (!node.valid())
+            continue;
+        QString nodestrpath = fileInfo.absoluteFilePath();
+        node->setName(nodestrpath.toLocal8Bit().toStdString());
+        _model->addChild(node);
+    }
 
-	emit progress(99);
-	emit done();
+    emit progress(99);
+    emit done();
 
-	_loadingLock.unlock();
+    _loadingLock.unlock();
 }

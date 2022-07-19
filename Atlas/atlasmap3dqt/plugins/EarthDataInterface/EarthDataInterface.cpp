@@ -56,11 +56,11 @@ EarthDataInterface::EarthDataInterface()
         tr("Add feature maps")
     };
     _dataGroups[MODEL_LAYER] = {
-      tr("Models"),
-      QStringLiteral("addModel"),
-      QStringLiteral("resources/icons/model.png"),
-      tr("Model"),
-      tr("Add models")
+        tr("Models"),
+        QStringLiteral("addModel"),
+        QStringLiteral("resources/icons/model.png"),
+        tr("Model"),
+        tr("Add models")
     };
 }
 
@@ -75,8 +75,8 @@ void  EarthDataInterface::setupUi(QToolBar *toolBar, QMenu *menu)
 
     for (unsigned i = 0; i < ALL_TYPE; i++)
     {
-        QMenu *menu = getOrAddMenu((LayerType)i);
-        getOrAddToolButton((LayerType)i, menu);
+        QMenu *menu = getOrAddMenu(static_cast<LayerType>(i));
+        getOrAddToolButton(static_cast<LayerType>(i), menu);
     }
 
     parseEarthNode();
@@ -89,7 +89,7 @@ void  EarthDataInterface::init()
     PluginInterface::init();
 }
 
-void  EarthDataInterface::showDataAttributes(const QString& nodeName)
+void  EarthDataInterface::showDataAttributes(const QString& /*nodeName*/)
 {
     // TODO: Not used yet
 
@@ -169,7 +169,7 @@ QToolButton * EarthDataInterface::getOrAddToolButton(LayerType dataType, QMenu *
 }
 
 void  EarthDataInterface::getFeatureAttribute(const QString& path, QVector<attrib> &attributeList, QStringList &featureFieldList,
-    osgEarth::Symbology::Style *style)
+                                              osgEarth::Symbology::Style *style)
 {
     _modelLayerManager->getFeatureAttribute(path, attributeList, featureFieldList, style);
     _dataManager->updateAttributeList(path, attributeList);
@@ -180,7 +180,7 @@ void  EarthDataInterface::addLayerToMap(const QString& name, osg::ref_ptr<osgEar
 {
     if (!layer.valid())
     {
-        QMessageBox::warning((QWidget *)(this->parent()), tr("Error"), tr("Create node failed!"));
+        QMessageBox::warning(static_cast<QWidget *>(this->parent()), tr("Error"), tr("Create node failed!"));
         return;
     }
 
@@ -193,48 +193,48 @@ void  EarthDataInterface::addLayerToMap(const QString& name, osg::ref_ptr<osgEar
     auto added = _mainMap[0]->getLayerByName(layer->getName());
     if (added && added->getEnabled())
     {
-      switch (dataType)
-      {
-      case(FEATURE_LAYER):
-        emit recordData(layer, name, tr("Feature Layers"));
-        layer->setUserValue("gemtype", _modelLayerManager->getGemType().toStdString());
-        layer->setUserValue("layerheight", 0);
-        break;
-      case(MODEL_LAYER):
-        if (!parent.isEmpty())
-          emit recordData(layer, name, parent);
-        else
-          osgEarth::notify(osg::WARN) << "Model map adding failed, invalid tree parent";
-        break;
-      default:
-        osgEarth::notify(osg::WARN) << "Model map adding failed, invalid data type";
-        break;
-      }
+        switch (dataType)
+        {
+        case(FEATURE_LAYER):
+            emit recordData(layer, name, tr("Feature Layers"));
+            layer->setUserValue("gemtype", _modelLayerManager->getGemType().toStdString());
+            layer->setUserValue("layerheight", 0);
+            break;
+        case(MODEL_LAYER):
+            if (!parent.isEmpty())
+                emit recordData(layer, name, parent);
+            else
+                osgEarth::notify(osg::WARN) << "Model map adding failed, invalid tree parent";
+            break;
+        default:
+            osgEarth::notify(osg::WARN) << "Model map adding failed, invalid data type";
+            break;
+        }
     }
     else
     {
-      QMessageBox::warning((QWidget *)this->parent(), tr("Error"), tr("Data loading failed!"));
+        QMessageBox::warning(static_cast<QWidget *>(this->parent()), tr("Error"), tr("Data loading failed!"));
     }
 }
 
 void EarthDataInterface::addLayerToMap(const QString& name, osg::ref_ptr<osgEarth::Layer> layer, LayerType dataType, QVector<attrib>& attribute, osgEarth::GeoExtent * extent)
 {
-  for (int i = 0; i < MAX_SUBVIEW; i++)
-  {
-    _mainMap[i]->addLayer(layer);
-  }
+    for (int i = 0; i < MAX_SUBVIEW; i++)
+    {
+        _mainMap[i]->addLayer(layer);
+    }
 
-  // Check if the layer is added successfully
-  auto added = _mainMap[0]->getLayerByName(layer->getName());
-  if (added && added->getEnabled())
-  {
-    emit  recordData(layer, name, _dataGroups[dataType].dataTreeTitle, extent);
-    _dataManager->updateAttributeList(name, attribute);
-  }
-  else
-  {
-    QMessageBox::warning((QWidget *)parent(), tr("Error"), tr("Data loading failed!"));
-  }
+    // Check if the layer is added successfully
+    auto added = _mainMap[0]->getLayerByName(layer->getName());
+    if (added && added->getEnabled())
+    {
+        emit  recordData(layer, name, _dataGroups[dataType].dataTreeTitle, extent);
+        _dataManager->updateAttributeList(name, attribute);
+    }
+    else
+    {
+        QMessageBox::warning(static_cast<QWidget *>(parent()), tr("Error"), tr("Data loading failed!"));
+    }
 }
 
 void  EarthDataInterface::parseEarthNode()
@@ -245,7 +245,7 @@ void  EarthDataInterface::parseEarthNode()
     for (auto layer : layers)
     {
         QString parent;
-        osgEarth::Layer* terrainLayer = NULL;
+        osgEarth::Layer* terrainLayer = nullptr;
 
         if (!terrainLayer)
         {
@@ -276,7 +276,7 @@ void  EarthDataInterface::parseEarthNode()
             // The layer's name may have changed, set its copy's as well
             for (unsigned i = 1; i < MAX_SUBVIEW; i++)
             {
-                if (_mainMap[i] != NULL)
+                if (_mainMap[i] != nullptr)
                 {
                     _mainMap[i]->getLayerByName(originalName)->setName(layer->getName());
                 }

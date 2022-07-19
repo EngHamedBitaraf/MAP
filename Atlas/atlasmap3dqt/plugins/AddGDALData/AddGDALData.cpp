@@ -34,7 +34,7 @@ static QVector<attrib>  getGDALinfo_Raster(const QString& path)
     GDALAllRegister();
     CPLSetConfigOption("GDAL_FILENAME_IS_UTF8", "NO");
     CPLSetConfigOption("SHAPE_ENCODING", "");
-    poDataset = (GDALDataset *)GDALOpen(path.toLocal8Bit().toStdString().c_str(), GA_ReadOnly);
+    poDataset = static_cast<GDALDataset *>(GDALOpen(path.toLocal8Bit().toStdString().c_str(), GA_ReadOnly));
 
     if (!poDataset)
     {
@@ -51,7 +51,7 @@ static QVector<attrib>  getGDALinfo_Raster(const QString& path)
             poDataset->GetRasterCount());
     attribList.push_back(attrib("Size", str));
 
-    if (poDataset->GetProjectionRef() != NULL)
+    if (poDataset->GetProjectionRef() != nullptr)
     {
         OGRSpatialReference  srs(poDataset->GetProjectionRef());
         char                *poStr;
@@ -105,7 +105,7 @@ static QVector<attrib>  getGDALinfo_Raster(const QString& path)
 
         if (!(bGotMin && bGotMax))
         {
-            GDALComputeRasterMinMax((GDALRasterBandH)poBand, TRUE, adfMinMax);
+            GDALComputeRasterMinMax(static_cast<GDALRasterBandH>(poBand), TRUE, adfMinMax);
         }
 
         sprintf(str, "%.3fd", adfMinMax[0]);
@@ -120,7 +120,7 @@ static QVector<attrib>  getGDALinfo_Raster(const QString& path)
             attribList.push_back(attrib("Overview Count", str));
         }
 
-        if (poBand->GetColorTable() != NULL)
+        if (poBand->GetColorTable() != nullptr)
         {
             sprintf(str, "%d",
                     poBand->GetColorTable()->GetColorEntryCount());
@@ -133,7 +133,7 @@ static QVector<attrib>  getGDALinfo_Raster(const QString& path)
     return attribList;
 }
 
-static QVector<attrib>  getGDALinfo_Vector(const QString& path, QVector<feature> &featureTable)
+static QVector<attrib>  getGDALinfo_Vector(const QString& path, QVector<feature> &/*featureTable*/)
 {
     QVector<attrib>  attribList;
     char             str[1000];
@@ -143,9 +143,9 @@ static QVector<attrib>  getGDALinfo_Vector(const QString& path, QVector<feature>
     CPLSetConfigOption("GDAL_FILENAME_IS_UTF8", "NO");
     CPLSetConfigOption("SHAPE_ENCODING", "");
     GDALDataset *poDataset;
-    poDataset = (GDALDataset *)GDALOpenEx(path.toLocal8Bit().toStdString().c_str(), GDAL_OF_VECTOR, NULL, NULL, NULL);
+    poDataset = static_cast<GDALDataset *>(GDALOpenEx(path.toLocal8Bit().toStdString().c_str(), GDAL_OF_VECTOR, nullptr, nullptr, nullptr));
 
-    if (poDataset == NULL)
+    if (poDataset == nullptr)
     {
         return attribList;
     }
@@ -201,7 +201,7 @@ AddGDALData::~AddGDALData()
 {
 }
 
-void  AddGDALData::setupUi(QToolBar *toolBar, QMenu *menu)
+void  AddGDALData::setupUi(QToolBar */*toolBar*/, QMenu *menu)
 {
     QIcon  icon;
 

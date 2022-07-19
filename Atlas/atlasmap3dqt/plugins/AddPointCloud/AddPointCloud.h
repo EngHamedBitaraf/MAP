@@ -10,25 +10,25 @@ QT_END_NAMESPACE
 
 class AddPointCloud : public PluginInterface
 {
-	Q_OBJECT
-	Q_PLUGIN_METADATA(IID "io.tqjxlm.Atlas.PluginInterface" FILE "AddPointCloud.json")
-	Q_INTERFACES(PluginInterface)
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "io.tqjxlm.Atlas.PluginInterface" FILE "AddPointCloud.json")
+    Q_INTERFACES(PluginInterface)
 
 public:
-	AddPointCloud();
+    AddPointCloud();
     ~AddPointCloud() override;
-	virtual void setupUi(QToolBar *toolBar, QMenu *menu) override;
+    virtual void setupUi(QToolBar *toolBar, QMenu *menu) override;
 
 protected:
-	void setupStyleTab();
+    void setupStyleTab();
 
 protected slots:
-	void addPointCloud();
-	void setPointSize(int size);
+    void addPointCloud();
+    void setPointSize(int size);
 
 protected:
-	void loadPointCloudModel(const QString& fileName);
+    void loadPointCloudModel(const QString& fileName);
 
 private:
-	float _pointSize;
+    float _pointSize;
 };
