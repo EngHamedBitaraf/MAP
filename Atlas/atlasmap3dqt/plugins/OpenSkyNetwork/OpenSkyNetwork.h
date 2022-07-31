@@ -2,7 +2,7 @@
 #define OPENSKYNETWORK_H
 
 #include <QtPlugin>
-#include <core/PluginInterface/PluginInterface.h>
+#include <PluginInterface.h>
 #include "openskyfetcher.h"
 
 QT_BEGIN_NAMESPACE

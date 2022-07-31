@@ -5,7 +5,7 @@
 #include <QMenu>
 #include <QFileDialog>
 
-#include <core/ViewerWidget/ViewerWidget.h>
+#include <ViewerWidget.h>
 #include "CaptureImageCallback.h"
 
 ScreenShot::ScreenShot()

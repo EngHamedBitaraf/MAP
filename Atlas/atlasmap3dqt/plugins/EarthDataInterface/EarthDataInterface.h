@@ -3,9 +3,9 @@
 #include "EarthDataInterface_global.h"
 
 #include <QtPlugin>
-#include <core/PluginInterface/PluginInterface.h>
+#include <PluginInterface.h>
 
-#include <core/DataManager/DataFormats.h>
+#include <DataFormats.h>
 
 QT_BEGIN_NAMESPACE
 class QToolBar;

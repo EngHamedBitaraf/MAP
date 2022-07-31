@@ -11,7 +11,7 @@
 #include <QProgressDialog>
 #include <QTime>
 
-#include <core/ViewerWidget/ViewerWidget.h>
+#include <ViewerWidget.h>
 
 /** PosterVisitor: A visitor for adding culling callbacks to newly allocated paged nodes */
 class PosterVisitor : public osg::NodeVisitor

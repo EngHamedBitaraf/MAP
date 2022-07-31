@@ -11,9 +11,9 @@
 
 #include <osgEarth/SpatialReference>
 
-#include <core/ViewerWidget/ViewerWidget.h>
-#include <core/DataManager/DataManager.h>
-#include <core/MapController/MapController.h>
+#include <ViewerWidget.h>
+#include <DataManager.h>
+#include <MapController.h>
 
 MultiView::MultiView():
   _subView(NULL),

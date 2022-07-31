@@ -20,23 +20,23 @@ osg::Vec3d                                             MousePicker::_currentLoca
 osg::Vec3d                                             MousePicker::_currentWorldPos;
 osgUtil::LineSegmentIntersector::Intersections         MousePicker::_intersections;
 osgUtil::LineSegmentIntersector::Intersection          MousePicker::_nearestIntesection;
-osg::ref_ptr<osg::Group>                               MousePicker::_root        = NULL;
-osg::ref_ptr<osgSim::OverlayNode>                      MousePicker::_overlayNode = NULL;
-osg::ref_ptr<osg::Group>                               MousePicker::_subgraph    = NULL;
-osg::ref_ptr<osg::Group>                               MousePicker::_drawRoot    = NULL;
-osg::ref_ptr<osg::Group>                               MousePicker::_mapRoot     = NULL;
-osg::ref_ptr<osg::Group>                               MousePicker::_dataRoot    = NULL;
+osg::ref_ptr<osg::Group>                               MousePicker::_root        = nullptr;
+osg::ref_ptr<osgSim::OverlayNode>                      MousePicker::_overlayNode = nullptr;
+osg::ref_ptr<osg::Group>                               MousePicker::_subgraph    = nullptr;
+osg::ref_ptr<osg::Group>                               MousePicker::_drawRoot    = nullptr;
+osg::ref_ptr<osg::Group>                               MousePicker::_mapRoot     = nullptr;
+osg::ref_ptr<osg::Group>                               MousePicker::_dataRoot    = nullptr;
 osg::ref_ptr<osgEarth::MapNode>                        MousePicker::_mapNode[MAX_SUBVIEW];
 osg::ref_ptr<osgEarth::Map>                            MousePicker::_mainMap[MAX_SUBVIEW];
-DataManager                                           *MousePicker::_dataManager     = NULL;
-SettingsManager                                       *MousePicker::_settingsManager = NULL;
-ViewerWidget                                          *MousePicker::_mainViewer      = NULL;
-QWidget                                               *MousePicker::_mainWindow      = NULL;
+DataManager                                           *MousePicker::_dataManager     = nullptr;
+SettingsManager                                       *MousePicker::_settingsManager = nullptr;
+ViewerWidget                                          *MousePicker::_mainViewer      = nullptr;
+QWidget                                               *MousePicker::_mainWindow      = nullptr;
 bool                                                   MousePicker::_isValid         = false;
 QLabel                                                *MousePicker::_labelWorldCoord;
 QLabel                                                *MousePicker::_labelGeoCoord;
-osg::ref_ptr<const osgEarth::SpatialReference>         MousePicker::_globalSRS = NULL;
-const char                                            *MousePicker::_globalWKT = NULL;
+osg::ref_ptr<const osgEarth::SpatialReference>         MousePicker::_globalSRS = nullptr;
+const char                                            *MousePicker::_globalWKT = nullptr;
 static osg::ref_ptr<const osgEarth::SpatialReference>  srs_wgs84               = osgEarth::SpatialReference::get("wgs84");
 static const double                                    DBL_LMT                 = 0.0000001;
 
@@ -211,6 +211,6 @@ bool  MousePicker::pointValid()
 	return _isValid;
 }
 
-void  MousePicker::defaultOperation(const osgGA::GUIEventAdapter &ea, osgGA::GUIActionAdapter &aa)
+void  MousePicker::defaultOperation(const osgGA::GUIEventAdapter &/*ea*/, osgGA::GUIActionAdapter &/*aa*/)
 {
 }

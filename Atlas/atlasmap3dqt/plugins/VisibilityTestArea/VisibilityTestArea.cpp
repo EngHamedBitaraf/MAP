@@ -23,7 +23,7 @@
 #include <osgSim/OverlayNode>
 #include <osgQt/GraphicsWindowQt>
 
-#include <core/ViewerWidget/ViewerWidget.h>
+#include <ViewerWidget.h>
 
 static const int   SM_TEXTURE_WIDTH  = 1024;
 static const bool  SHOW_DEBUG_CAMERA = false;

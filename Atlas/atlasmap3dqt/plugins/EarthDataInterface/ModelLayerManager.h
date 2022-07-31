@@ -7,9 +7,9 @@
 #include <string>
 
 #include "../../atlasmap3d/NameSpace.h"
-#include <../../atlasmap3d/core/DataManager/DataFormats.h>
+#include <../../atlasmap3d/DataFormats.h>
 
-#include <../../atlasmap3d/core/PluginInterface/PluginInterface.h>
+#include <../../atlasmap3d/PluginInterface.h>
 
 #include <osg/Object>
 

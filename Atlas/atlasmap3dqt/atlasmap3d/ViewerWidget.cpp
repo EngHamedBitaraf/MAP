@@ -72,7 +72,7 @@ void  ViewerWidget::setWidgetInLayout(QWidget *widget, int row, int column, bool
 void  ViewerWidget::removeView(osgViewer::View *view)
 {
     stopRendering();
-    ((QGridLayout *)layout())->removeWidget(_widgets[view]);
+    static_cast<QGridLayout *>(layout())->removeWidget(_widgets[view]);
     _widgets.remove(view);
     osgViewer::CompositeViewer::removeView(view);
     startRendering();
@@ -86,7 +86,7 @@ QWidget * ViewerWidget::createViewWidget(osgQt::GraphicsWindowQt *gw, osg::Node 
 
     // Connect and align the camera with the given graphics window
     camera->setGraphicsContext(gw);
-    camera->setClearColor(osg::Vec4(0.95, 0.95, 0.95, 1.0));
+    camera->setClearColor(osg::Vec4(0.95f, 0.95f, 0.95f, 1.0));
     camera->setViewport(new osg::Viewport(0, 0, traits->width, traits->height));
     camera->setSmallFeatureCullingPixelSize(-1.0f);
 
@@ -154,14 +154,14 @@ osgQt::GraphicsWindowQt * ViewerWidget::getMainContext()
     return _mainContext;
 }
 
-void  ViewerWidget::paintEvent(QPaintEvent *event)
+void  ViewerWidget::paintEvent(QPaintEvent */*event*/)
 {
     frame();
 }
 
 void  ViewerWidget::setMouseStyle(unsigned styleshape)
 {
-    _mainContext->setCursor((osgViewer::GraphicsWindow::MouseCursor)styleshape);
+    _mainContext->setCursor(static_cast<osgViewer::GraphicsWindow::MouseCursor>(styleshape));
 }
 
 void  ViewerWidget::stopRendering()

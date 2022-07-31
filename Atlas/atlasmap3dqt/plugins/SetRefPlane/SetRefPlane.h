@@ -2,7 +2,7 @@
 #include "SetRefPlane_global.h"
 
 #include <QtPlugin>
-#include <core/PluginInterface/PluginInterface.h>
+#include <PluginInterface.h>
 
 QT_BEGIN_NAMESPACE
 class QToolBar;

@@ -1,6 +1,6 @@
 #include "AddGDALData.h"
 
-#include "core/DataManager/DataFormats.h"
+#include "DataFormats.h"
 
 #include <QToolBar>
 #include <QAction>

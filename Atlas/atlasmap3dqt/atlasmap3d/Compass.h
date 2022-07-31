@@ -9,7 +9,7 @@ class Compass : public osg::Camera
 public:
 	Compass();
 	Compass(const Compass& copy, osg::CopyOp copyop = osg::CopyOp::SHALLOW_COPY);
-	META_Node(osg, Compass);
+    META_Node(osg, Compass)
 
 	/** Set the plate of the compass inside the camera projection range. */
 	void setPlate(osg::MatrixTransform* plate) { _plateTransform = plate; }

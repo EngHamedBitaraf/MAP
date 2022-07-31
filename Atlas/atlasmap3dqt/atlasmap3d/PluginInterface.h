@@ -85,27 +85,27 @@ public:
 
     virtual ~PluginInterface(void);
 
-    virtual void  init();
+    virtual void init();
 
-    virtual void  setupUi(QToolBar *toolBar, QMenu *menu) = 0;
+    virtual void setupUi(QToolBar *toolBar, QMenu *menu) = 0;
 
     // Load a custom context menu when right click on the related tree node from DataTree
-    virtual void  loadContextMenu(QMenu *contextMenu, QTreeWidgetItem *selectedItem);
+    virtual void loadContextMenu(QMenu *contextMenu, QTreeWidgetItem *selectedItem);
 
     // Main function to handle input events
-    virtual bool  handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIActionAdapter &aa);
+    virtual bool handle(const osgGA::GUIEventAdapter &ea, osgGA::GUIActionAdapter &aa);
 
-    QString       getPluginName();
+    QString getPluginName();
 
-    QString       getPluginGroup();
+    QString getPluginGroup();
 
     /** Register an action as exclusive with others
    * If not set, the action can act with other mutex actions
    */
-    static void   registerMutexAction(QAction *action);
+    static void registerMutexAction(QAction *action);
 
     // Set an action that is always enabled when no other action is enabled
-    static void   setDefaultAction(QAction *action);
+    static void setDefaultAction(QAction *action);
 
 protected:
     // Get or add a setting from the plugin settings
@@ -141,60 +141,46 @@ protected:
    *   1. update _currentAnchor and _anchoredOffset
    *   2. update _isDrawing status
    */
-    virtual void                         beginDrawing();
+    virtual void beginDrawing();
 
     /** Call this after you fishied a drawing
    * It makes sure any thing related to drawing do not happen afterwards
    */
-    virtual void                         endDrawing();
+    virtual void endDrawing();
 
     /** Update _currentAnchor to the nearest anchor point
    *
    * This function exists to support anti-jittering for large coordinates
    */
-    void                                 updateAnchorPoint();
+    void updateAnchorPoint();
 
     /** Return the nearest anchor point to the target (default as _currentWorldPos)
    * The target should be in world coordinate
    * This function exists to support anti-jittering for large coordinates
    */
-    osg::PositionAttitudeTransform     * getNearestAnchorPoint(const osg::Vec3 &point = _currentWorldPos);
+    osg::PositionAttitudeTransform* getNearestAnchorPoint(const osg::Vec3 &point = _currentWorldPos);
 
     // Return an anchored version of a world space array
-    osg::ref_ptr<osg::Vec3Array>         anchorArray(osg::ref_ptr<osg::Vec3Array> worldSpaceArray);
+    osg::ref_ptr<osg::Vec3Array> anchorArray(osg::ref_ptr<osg::Vec3Array> worldSpaceArray);
 
     // -------------------------Keyboard and mouse callback functions-------------------------
-    virtual void                         onLeftButton()
-    {
-    }
+    virtual void onLeftButton() {}
 
-    virtual void                         onRightButton()
-    {
-    }
+    virtual void onRightButton() {}
 
-    virtual void                         onReleaseButton()
-    {
-    }
+    virtual void onReleaseButton() {}
 
-    virtual void                         onDoubleClick()
-    {
-    }
+    virtual void onDoubleClick() {}
 
-    virtual void                         onMouseMove()
-    {
-    }
+    virtual void onMouseMove() {}
 
-    virtual void                         onArrowKeyUp()
-    {
-    }
+    virtual void onArrowKeyUp() {}
 
-    virtual void                         onArrowKeyDown()
-    {
-    }
+    virtual void onArrowKeyDown() {}
 
 signals:
     void recordData(osg::Node*, QString, QString, bool = false);
-    void recordData(osgEarth::Layer*, QString, QString, osgEarth::GeoExtent* = NULL, bool = false);
+    void recordData(osgEarth::Layer*, QString, QString, osgEarth::GeoExtent* = nullptr, bool = false);
     void removeData(const QString&);
     void switchData(QString, bool);
     void loadingProgress(int);

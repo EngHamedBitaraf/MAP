@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <QtPlugin>
-#include <core/PluginInterface/PluginInterface.h>
+#include <PluginInterface.h>
 #include <QVector>
 
 QT_BEGIN_NAMESPACE

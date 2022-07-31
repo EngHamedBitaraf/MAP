@@ -15,9 +15,9 @@
 
 #include <osgEarth/SpatialReference>
 
-#include <core/SettingsManager/SettingsManager.h>
-#include <core/AtlasMainWindow/AtlasMainWindow.h>
-#include <core/AtlasMainWindow/NXDockWidget.h>
+#include <SettingsManager.h>
+#include <AtlasMainWindow.h>
+#include <NXDockWidget.h>
 
 Locator::Locator()
 {

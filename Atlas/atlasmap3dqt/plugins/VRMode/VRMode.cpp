@@ -15,8 +15,8 @@
 #include "openvreventhandler.h"
 #include <osgViewer/GraphicsWindow>
 
-#include <core/ViewerWidget/ViewerWidget.h>
-#include <core/MapController/MapController.h>
+#include <ViewerWidget.h>
+#include <MapController.h>
 
 
 class VRControlCallback: public osg::NodeCallback

@@ -10,8 +10,8 @@
 
 #include "SaveOrthoProjDialog.h"
 
-#include <core/DataManager/FindNode.hpp>
-#include <core/DataManager/DataRecord.h>
+#include <FindNode.hpp>
+#include <DataRecord.h>
 
 OrthoMap::OrthoMap()
     : _selectedNode(nullptr)

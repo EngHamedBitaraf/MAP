@@ -35,12 +35,12 @@ using namespace std;
 
 #include <gdal_priv.h>
 
-#include <core/DataManager/DataManager.h>
-#include <core/ViewerWidget/ViewerWidget.h>
-#include <core/MousePicker/MousePicker.h>
-#include <core/SettingsManager/SettingsManager.h>
-#include <core/PluginManager/PluginManager.h>
-#include <core/MapController/MapController.h>
+#include <DataManager.h>
+#include <ViewerWidget.h>
+#include <MousePicker.h>
+#include <SettingsManager.h>
+#include <PluginManager.h>
+#include <MapController.h>
 #include <../atlasmap3d/ui_AtlasMainWindow.h>
 
 Atlas::Atlas(QWidget *parent, Qt::WindowFlags flags):
@@ -161,11 +161,11 @@ void  Atlas::initDataStructure()
     _dataRoot = new osg::Group;
     _dataRoot->setName("Data Root");
 
-//    QString filename = QFileDialog::getOpenFileName(
-//                this,
-//                tr("Open Earth File"),
-//                QDir::currentPath(),
-//                tr("Document files (*.earth);;All files (*.*)"));
+    //    QString filename = QFileDialog::getOpenFileName(
+    //                this,
+    //                tr("Open Earth File"),
+    //                QDir::currentPath(),
+    //                tr("Document files (*.earth);;All files (*.*)"));
 
     // Init osgEarth node using the predefined .earth file
     for (int i = 0; i < MAX_SUBVIEW; i++)
@@ -175,19 +175,20 @@ void  Atlas::initDataStructure()
 
         if (mode == "projected")
         {
-//            if (filename.isNull())
-//            {
-                baseMapPath = QStringLiteral("resources/earth_files/projected.earth");
-//            }
-//            else
-//            {
-//                baseMapPath = filename.toUtf8();
-//            }
+            //            if (filename.isNull())
+            //            {
+            baseMapPath = QStringLiteral("resources/earth_files/projected.earth");
+            //            }
+            //            else
+            //            {
+            //                baseMapPath = filename.toUtf8();
+            //            }
 
         }
         else if (mode == "geocentric")
         {
-            baseMapPath = QStringLiteral("resources/earth_files/geocentric.earth");
+//            baseMapPath = QStringLiteral("resources/earth_files/geocentric.earth");
+            baseMapPath = QStringLiteral("resources/earth_files/tehran_area1.earth");
         }
         else
         {

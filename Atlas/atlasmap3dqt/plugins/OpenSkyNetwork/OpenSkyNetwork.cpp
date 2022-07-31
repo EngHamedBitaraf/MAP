@@ -3,7 +3,7 @@
 #include <QToolBar>
 #include <QAction>
 #include <QMenu>
-#include <core/ViewerWidget/ViewerWidget.h>
+#include <ViewerWidget.h>
 #include <qmessagebox.h>
 #include "dataptree.h"
 

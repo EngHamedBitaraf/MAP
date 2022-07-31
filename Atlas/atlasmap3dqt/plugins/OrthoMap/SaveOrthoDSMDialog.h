@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QProcess>
 #include "PosterPrinter.h"
-#include <core/ViewerWidget/ViewerWidget.h>
+#include <ViewerWidget.h>
 #include "ui_SaveOrthoProjDialog.h"
 
 class CameraSyncCallback;

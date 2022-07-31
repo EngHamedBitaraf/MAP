@@ -11,11 +11,11 @@
 #include <osg/ShapeDrawable>
 #include <osg/BoundingBox>
 
-#include <core/DataManager/DataManager.h>
-#include <core/DataManager/DataRecord.h>
-#include <core/ViewerWidget/ViewerWidget.h>
+#include <DataManager.h>
+#include <DataRecord.h>
+#include <ViewerWidget.h>
 
-#include <../../atlasmap3d/core/DataManager/FindNode.hpp>
+#include <../../atlasmap3d/FindNode.hpp>
 #include "TileSelectDialog.h"
 
 static osg::Vec4 colorToVec(const QColor &color)

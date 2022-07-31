@@ -28,17 +28,17 @@ static osg::Vec4  colorToVec(const QColor &color)
     return osg::Vec4(color.redF(), color.greenF(), color.blueF(), color.alphaF());
 }
 
-osg::Group   *PluginInterface::_activatedPlugin = NULL;
-QActionGroup *PluginInterface::_mutexActions    = NULL;
-QAction      *PluginInterface::_defaultAction   = NULL;
+osg::Group   *PluginInterface::_activatedPlugin = nullptr;
+QActionGroup *PluginInterface::_mutexActions    = nullptr;
+QAction      *PluginInterface::_defaultAction   = nullptr;
 
 // A time limit to tell apart double click and single click
 static double  clickLimit;
 static double  lastClicked = 0.0;
 
 PluginInterface::PluginInterface():
-    _instanceCount(0),
-    _isDrawing(false)
+    _isDrawing(false),
+    _instanceCount(0)
 {
     auto  anchorStep = _settingsManager->getOrAddSetting(
                 "Plugin Interface/Anchor step", QList<QVariant> { 100000, 100000 })
@@ -78,7 +78,7 @@ void  PluginInterface::init()
     clickLimit = clickSetting.toDouble();
 }
 
-void  PluginInterface::loadContextMenu(QMenu *contextMenu, QTreeWidgetItem *selectedItem)
+void  PluginInterface::loadContextMenu(QMenu */*contextMenu*/, QTreeWidgetItem */*selectedItem*/)
 {
 }
 
@@ -320,7 +320,7 @@ void  PluginInterface::registerMutexAction(QAction *action)
 void  PluginInterface::uncheckMutexActions(QAction *action)
 {
     // When the triggered action is going to be toggled off, toggle on the default action
-    if (!action->isChecked() && (_defaultAction != action) && (_defaultAction != NULL))
+    if (!action->isChecked() && (_defaultAction != action) && (_defaultAction != nullptr))
     {
         _defaultAction->toggle();
 

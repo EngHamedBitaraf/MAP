@@ -2,7 +2,7 @@
 #include "DrawSurfaceLine_global.h"
 
 #include <QtPlugin>
-#include <core/PluginInterface/PluginInterface.h>
+#include <PluginInterface.h>
 
 #include <osgSim/ElevationSlice>
 
