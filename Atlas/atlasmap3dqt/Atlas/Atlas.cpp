@@ -51,7 +51,7 @@ Atlas::Atlas(QWidget *parent, Qt::WindowFlags flags):
     QCoreApplication::setApplicationName("Atlas");
 
     GDALAllRegister();
-    CPLSetConfigOption("GDAL_DATA", ".\\resources\\GDAL_data");
+    CPLSetConfigOption("GDAL_DATA", "/usr/local/share/gdal");
 
     osg::DisplaySettings::instance()->setNumOfHttpDatabaseThreadsHint(8);
     osg::DisplaySettings::instance()->setNumOfDatabaseThreadsHint(2);

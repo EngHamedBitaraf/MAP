@@ -34,4 +34,6 @@ protected:
 	QAction   *_action;
 	QLineEdit *_coordQueryX;
 	QLineEdit *_coordQueryY;
+    QLineEdit *_pitch;
+    QLineEdit *_range;
 };

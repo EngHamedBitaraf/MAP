@@ -54,7 +54,8 @@ void  PluginManager::registerPlugin(PluginInterface *plugin)
     MapController* controller =
             dynamic_cast<MapController*>(_viewerWidget->getMainView()->getCameraManipulator());
     //if (controller.valid())
-    connect(plugin, &PluginInterface::setViewPoint, controller, &MapController::setViewPoint);
+    if (controller != nullptr)
+        connect(plugin, &PluginInterface::setViewPoint, controller, &MapController::setViewPoint);
 
     _loadedPlugins.push_back(plugin);
 }

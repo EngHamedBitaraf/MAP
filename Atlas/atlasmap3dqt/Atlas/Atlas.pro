@@ -178,10 +178,10 @@ unix:!macx: LIBS += -L$$OUT_PWD/../plugins
 
 
 
-unix:!macx: LIBS += -L$$PWD/../../openvr/openvr/lib/linux64/ -lopenvr_api
+#unix:!macx: LIBS += -L$$PWD/../../openvr/openvr/lib/linux64/ -lopenvr_api
 
-INCLUDEPATH += $$PWD/../../openvr/openvr/headers
-DEPENDPATH += $$PWD/../../openvr/openvr/headers
+#INCLUDEPATH += $$PWD/../../openvr/openvr/headers
+#DEPENDPATH += $$PWD/../../openvr/openvr/headers
 
 #copy resource folder
 defineTest(copyToDestDir) {

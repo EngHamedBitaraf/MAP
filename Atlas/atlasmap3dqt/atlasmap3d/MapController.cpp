@@ -249,7 +249,16 @@ void  MapController::setViewPoint(const osgEarth::Viewpoint &vp)
         return;
     }
 
-    double  distance = vp.range().value().getValue();
+//    double  distance = vp.range().value().getValue();
+    //--------------
+    //setHeading(ZERO_LIMIT);
+    double pitch = vp.getPitch();
+    double pitchRadian = pitch *osg::PI/180;
+    double  distance = vp.getRange();
+
+    setElevation(pitchRadian);
+    setDistance(5000);
+    //--------------
 
     if (vp.nodeIsSet())
     {

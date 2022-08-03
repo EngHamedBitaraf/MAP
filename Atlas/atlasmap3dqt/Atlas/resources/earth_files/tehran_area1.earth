@@ -1,4 +1,4 @@
-<map name="OpenStreetMap" type="geocentric" version="2">
+<map name="OpenStreetMap" type="projected" version="2">
 	<!--<image name="word"  driver='xyz'>
         <url> <![CDATA[http://192.168.10.115:8080/geoserver/gwc/service/wmts?layer=word%3Aworld&style=&tilematrixset=EPSG%3A900913&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=EPSG%3A900913%3A{z}&TileCol={x}&TileRow={y}]]></url>
 		<profile>spherical-mercator</profile>

@@ -34,6 +34,6 @@ SUBDIRS += \
     SlopAnalysis \
     Template \
     TileSelect \
-    VRMode \
+#    VRMode \
     VisibilityTest \
     VisibilityTestArea
